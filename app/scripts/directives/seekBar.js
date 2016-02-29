@@ -15,7 +15,7 @@
       replace: true,
       restrict: 'E',
       scope: { },
-      link: function(scope, element, attributes){
+      link: function(scope, element, attributes) {
         scope.value = 0;
         scope.max = 100;
 
@@ -38,7 +38,7 @@
         };
 
         scope.trackThumb = function() {
-          $document.bind('mousemove.thumb', function(event){
+          $document.bind('mousemove.thumb', function(event) {
             var percent = calculatePercent(seekBar, event);
             scope.$apply(function() {
               scope.value = percent * scope.max;
@@ -49,6 +49,10 @@
             $document.unbind('mousemove.thumb');
             $document.unbind('mouseup.thumb');
           });
+        };
+
+        scope.thumbStyle = function() {
+          return {left: percentString()};
         };
       }
     };
